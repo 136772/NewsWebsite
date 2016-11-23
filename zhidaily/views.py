@@ -9,7 +9,7 @@ from django.core.paginator import PageNotAnInteger
 def paging(request, **kwargs):
     tempdict = kwargs.keys()
     for temp in tempdict:
-        page_robot = Paginator(kwargs[temp], 2)
+        page_robot = Paginator(kwargs[temp], 5)
         page_num = request.GET.get('page')
         try:
             article_list = page_robot.page(page_num)
