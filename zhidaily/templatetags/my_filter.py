@@ -14,6 +14,11 @@ register = template.Library()
 
 @register.filter
 def formatT(value):
+    '''
+    提交时间与现在时间的差
+    :param value: 数据
+    :return: 格式化后的时间
+    '''
     value = value.replace(tzinfo=UTC())
     nowtime = datetime.datetime.today().replace(tzinfo=LocalTimezone())
     temp = (nowtime - value).days
@@ -30,6 +35,12 @@ def formatT(value):
 
 @register.filter
 def spli(value, value2):
+    '''
+    判断导航栏按钮 与 连接地址是否相同
+    :param value: 链接地址
+    :param value2: 导航栏地址
+    :return: True/False
+    '''
     flag = False
     value = value.split('/')[-2]
     if int(value) == int(value2):

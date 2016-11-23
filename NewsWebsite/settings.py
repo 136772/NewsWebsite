@@ -29,7 +29,7 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
+#增加自定义过滤器app    zhidaily.templatetags.my_filter
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'zhidaily.templatetags.my_filter'
 ]
 
+# 增加本地中间件  django.middleware.locale.LocaleMiddleware
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -109,6 +110,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
+# 更改时区
 TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
@@ -120,6 +122,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
+
+
 STATIC_URL = '/static/'
 MEDIA_URL = '/upload/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'upload').replace("//", "/")

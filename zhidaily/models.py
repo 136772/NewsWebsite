@@ -66,6 +66,9 @@ class Comment(models.Model):
 
 
 class Advert(models.Model):
+    '''
+    广告数据库
+    '''
     name = models.CharField(max_length=100)
     image = models.ImageField(upload_to='AD/%Y%m%d')
     url = models.URLField(null=True, blank=True,default='#')

@@ -7,6 +7,12 @@ from django.core.paginator import PageNotAnInteger
 
 
 def paging(request, **kwargs):
+    '''
+    分页
+    :param request: request
+    :param kwargs: 分页前数据
+    :return: 分页后的数据列表
+    '''
     tempdict = kwargs.keys()
     for temp in tempdict:
         page_robot = Paginator(kwargs[temp], 5)
@@ -21,6 +27,10 @@ def paging(request, **kwargs):
 
 
 def advert():
+    '''
+
+    :return: 所有display=True的广告
+    '''
     ad = Advert.objects.filter(display=True).all()
     return ad
 
@@ -32,6 +42,12 @@ def index(request):
 
 
 def category(request, cate_id):
+    '''
+    分类页面
+    :param request: request
+    :param cate_id: 分类id
+    :return: request，页面， context
+    '''
     context = {}
     bestlist = Best.objects.filter(select_reason='编辑推荐').order_by('sort').all()
     catefory = Category.objects.all()
