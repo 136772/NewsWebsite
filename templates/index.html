@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>知日报 - 首页</title>
+        <link rel="stylesheet" href="{% static 'css/semantic.css' %}" media="screen" title="no title" charset="utf-8">
+        <link rel="stylesheet" href="{% static 'css/homepage.css' %}" media="screen" title="no title" charset="utf-8">
+        <link rel="stylesheet" href="http://www.iconfont.cn/webfont/#!/webfont/index" >
+    </head>
+    <body>
+        <!--body-->
+        <div class="ui basic segment body" style="border-top:solid red 4px;padding:0;">
+            <!--body_nav-->
+            <div class="ui basic segment" style="border-bottom:solid rgb(230, 230, 230) 1px;padding:0;">
+                <div class="ui borderless menu container" style="border:0;box-shadow:none;width:878px;">
+                    <div class="header item">
+                        <img src="{% static 'images/icon.png' %}" style="width:42px;height:42px;"/>
+                        <img src="{% static 'images/zhiribao.png' %}" class="ui image"/>
+                    </div>
+                    <div class="item">
+                        <a href="#" class="item" style="color:red;">首页</a>
+                    </div>
+                    <div class="item">
+                        <a href="#" class="item">大公司日报</a>
+                    </div>
+                    <div class="item">
+                        <a href="#" class="item">设计日报</a>
+                    </div>
+                    <div class="item">
+                        <a href="#" class="item">不许无聊</a>
+                    </div>
+                    <div class="right menu">
+                        <div class="item">
+                            <a href="#">
+                                <img src="{% static 'images/login.png' %}" style="height:26px;width:24px;"/>
+                                <p style="margin-bottom:10px;color:black;margin-top:5px;">登录</p>
+                            </a>
+                        </div>
+                        <div class="item">
+                            <a href="#">
+                                <img src="{% static 'images/register.png' %}" style="height:32px;width:32px;"/>
+                                <p style="margin-bottom:10px;color:black;">注册</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--body_top-->
+            <div class="ui segment body basic container" >
+                <div class="ui horizontal basic segments" style="border: none">
+                    <div class="ui basic segment" style="background:url('/static/images/coverimg.png');height:380px;width:655px;background-size:cover;background-repeat:no-repeat;padding:0;">
+                        <a href="#" class="ui circular red button" style="padding-left:0;padding-right:0;margin-top:21px;margin-left:35px;width:88px;">今日热闻</a>
+                         <div class="ui bottom attached label" style="background-color:rgba(73, 73, 73,0.7);height:72px;padding-left:35px;">
+                            <h1 class="ui inverted header">
+                                日本人的日常与我们有什么不同？
+                            </h1>
+                        </div>
+                    </div>
+                    <div class="ui body-top-right segment" style="height:380px;width:220px;padding:0;">
+                        <div class="ui body-top-right basic segment" style="margin-top:0;margin-left:19px;border:solid red 2px;height:118px;" >
+							<p style="font-size:16px;">
+							    日本人的日常与我们有什么不同？
+							</p>
+                            <span>3小时前</span>
+                        </div>
+						<div class="ui body-top-right segment" style="margin-left:19px;height:118px;border-radius:0;box-shadow:none;">
+                            <p style="font-size:16px;">
+							    怎样增加深度睡眠时间？
+							</p>
+                            <span>3小时前</span>
+
+                        </div>
+						<div class="ui body-top-right segment" style="margin-bottom:0;margin-left:19px;height:118px;border-radius:0;box-shadow:none;">
+                            <p style="font-size:16px;">
+							    热门Top5：年度最大收购案诞生
+							</p>
+                            <span>3小时前</span>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ui four column grid">
+                    <div class="column">
+                        <div class="ui basic body segment" style="background:url('/static/images/img1.png');height:148px;width:204px;">
+                            <div class="ui bottom attached label" style="height:62px;background-color:rgba(73, 73, 73,0.7);">
+                                <h4 class="ui inverted header">要接多少案子，才能成为一名专项律师</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column" style="padding-left:12px;">
+                        <div class="ui ui basic body segment" style="background:url('/static/images/img2.png');height:148px;width:204px;">
+                            <div class="ui bottom attached label" style="height:62px;background-color:rgba(73, 73, 73,0.7);">
+                                <h4 class="ui inverted header">面试官问你的缺点是什么，应该如何回答？</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column" style="padding-left:9px;">
+                        <div class="ui ui basic body segment" style="background:url('/static/images/img3.png');height:148px;width:204px;">
+                            <div class="ui bottom attached label" style="height:62px;background-color:rgba(73, 73, 73,0.7);">
+                                <h4 class="ui inverted header">小事，必须结婚，不结不行</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column" style="padding-left:9px;">
+                        <div class="ui ui basic body segment" style="background:url('/static/images/img4.png');height:148px;width:204px;">
+                            <div class="ui bottom attached label" style="height:62px;background-color:rgba(73, 73, 73,0.7);">
+                                <h4 class="ui inverted header">知乎好问题，你们都自创过什么好吃的菜品？</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            <!--body_divider-->
+                <div class="ui divider" style="height:3px;"></div>
+
+            <!--body_body-->
+                <div class="ui grid">
+                    <div class="twelve wide column">
+                        <div class="ui items" style="width:655px;">
+                            <div class="item">
+                                <div class="image" style="height:208px;width:354px;">
+                                    <img src="{% static 'images/articleimg1.png' %}" style="height:208px"/>
+                                </div>
+                                <div class="ui basic segment" style="margin:0;padding:5px 0 0 19px;">
+                                    <h3 class="ui header">大家都各有所长，但要一起做事才效率高</h3>
+                                    <p>
+                                        最优效率的生产，应该先让最适合生产这个东西的人去生产，但是随着你想生产的更多，只好让那些最不适合的也上了。
+                                    </p>
+                                    <span style="position:absolute;transform:translate(0,-100%);bottom:-10%;">32分钟前</span>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="image" style="height:208px;width:354px;">
+                                    <img src="{% static 'images/articleimg2.png' %}"  style="height:208px" />
+                                </div>
+                                <div class="ui basic segment" style="margin:0;padding:5px 0 5px 19px;">
+                                    <h3 class="ui header">2016年最引人注目的包装设计，都能说明哪些消费趋势？</h3>
+                                    <p>
+                                        在这个颜值当道的时代，即使是你对自己的产品本身有着绝对自信，还是花点心思为它乔装打扮一番吧。。
+                                    </p>
+                                    <span style="position:absolute;transform:translate(0,-100%);bottom:-10%;">32分钟前</span>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="image" style="height:208px;width:354px;">
+                                    <img src="{% static 'images/articleimg3.png' %}" style="height:208px"  />
+                                </div>
+                                <div class="ui basic segment" style="margin:0;padding:5px 0 5px 19px;">
+                                    <h3 class="ui header">四年前卡梅隆在中国开了家公司，但如今还是默默无闻</h3>
+                                    <p>
+                                        电影技术公司在中国一向不受重视，哪怕创始人拍出过《阿凡达》。
+                                    </p>
+                                    <span style="position:absolute;transform:translate(0,-100%);bottom:-10%;">32分钟前</span>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="image" style="height:208px;width:354px;">
+                                    <img src="{% static 'images/articleimg4.png' %}"   />
+                                </div>
+                                <div class="ui basic segment" style="margin:0;padding:5px 0 5px 19px;">
+                                    <h3 class="ui header">大公司头条：智能手表销量三季度跌了一半</h3>
+                                    <p>
+                                        我们每天早上为你摘取最重要的商业新闻，一切可能改变我们生活的公司都在其列。
+                                    </p>
+                                    <span style="position:absolute;transform:translate(0,-100%);bottom:-10%;">32分钟前</span>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="image" style="height:208px;width:354px;">
+                                    <img src="{% static 'images/articleimg5.png' %}"   />
+                                </div>
+                                <div class="ui basic segment" style="margin:0;padding:5px 0 5px 19px;">
+                                    <h3 class="ui header">既不缺钱又不缺人，为何你的直播系统还是做砸了</h3>
+                                    <p>
+                                        我来给大家讲个故事。
+                                    </p>
+                                    <span style="position:absolute;transform:translate(0,-100%);bottom:-10%;">32分钟前</span>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="four wide column" style="padding-left:10px;">
+                        <div class="ui side outer basic segment">
+                            <h4 class="ui center aligned header" style="padding-top:10px;">编辑推荐</h4>
+                            <div class="ui side basic segment" style="background:url('/static/images/sideimg1.png');height:119px;width:204px;">       <div class="ui bottom attached label" style="background-color:rgba(73, 73, 73,0.7);height:42px;">
+                                    <h5 class="ui inverted header">卖公司这事还是有很多学问的，Twitter怎么就尴尬了？</h5>
+                                </div>
+                            </div>
+                            <div class="ui side basic segment" style="background:url('/static/images/sideimg2.png');height:119px;width:204px;">       <div class="ui bottom attached label" style="background-color:rgba(73, 73, 73,0.7);height:42px;">
+                                    <h5 class="ui inverted header">硅谷收益最高的风投说，钱太多是这个市场最大的问题</h5>
+
+                                </div>
+                            </div>
+                            <div class="ui side basic segment" style="background:url('/static/images/sideimg3.png');height:119px;width:204px;">       <div class="ui bottom attached label" style="background-color:rgba(73, 73, 73,0.7);height:42px;">
+                                    <h5 class="ui inverted header">看起来不起眼的日常设备，可能是未来网络攻击的对象</h5>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui list">
+                          <span class="sidbararrow"> </span><a class="item uilist" href="#">这部别出心裁的漫画，讲的是阿富汗战争时期不为人知的历史</a>
+                          <div class="listdescription">3分钟前</div>
+                          <span class="sidbararrow"> </span><a class="item uilist" href="#">华纳兄弟将拍摄的新片，讲述的是亚洲富豪的故事</a>
+                          <div class="listdescription">3分钟前</div>
+                          <span class="sidbararrow"> </span><a class="item uilist" href="#">美国各大银行纷纷关闭分行，说要向数字化转型</a>
+                          <div class="listdescription">3分钟前</div>
+                          <span class="sidbararrow"> </span><a class="item uilist" href="#">在医院看病也用微信支付，腾讯这回可能想多了   </a>
+                          <div class="listdescription">3分钟前</div>
+                          <span class="sidbararrow"> </span><a class="item uilist" href="#">马化腾说，微信最早就是个邮箱</a>
+                          <div class="listdescription">3分钟前</div>
+                          <span class="sidbararrow"> </span><a class="item uilist" href="#">拿了这笔钱后，全球最红新媒体之一BuzzFeed值17亿美元了</a>
+                          <div class="listdescription">3分钟前</div>
+                          <span class="sidbararrow"> </span><a class="item uilist" href="#">意想不到的童年回忆杀，《蜡笔小新》最新剧场版来了内地</a>
+                          <div class="listdescription">3分钟前</div>
+                        </div>
+                        <img src="{% static 'images/ad.png' %}" alt="" />
+                    </div>
+                </div>
+
+                <div class="ui basic segment" style="margin-bottom:20px;margin-bottom:40px;font-size:20px;">
+                    <button type="button" class="ui inverted red button" style="height:42px;width:204px;border-radius:0.3rem;position:absolute;transform:translate(-50%,-50%);left:40%;">浏览更多</button>
+
+            </div>
+        </div>
+
+        </div>
+
+        <!--foot-->
+        <div class="ui basic segment foot">
+            <div class="ui basic segment foot-head" style="background-color:rgb(50, 50, 50);">
+                <div class="ui horizontal basic segments container" style="width:878px;background-color:rgb(50, 50, 50);">
+                    <div class="ui basic left aligned segment" style="padding-left:0px;">
+                            <div class="image">
+                                <img src="{% static 'images/white_zhiribao.png' %}"/>
+                            </div>
+                            <div class="ui text menu">
+                                <div class="item">
+                                    <a href="#" ><h4 class="ui red header">关于我们</h4></a>
+                                </div>
+
+                                <div class="item">
+                                    <a href="#" ><h4 class="ui red header">加入我们</h4></a>
+                                </div>
+
+                                <div class="item">
+                                    <a href="#" ><h4 class="ui red header">联系我们</h4></a>
+                                </div>
+                                <div class="item">
+                                    <a href="#" ><h4 class="ui red header">寻求报道</h4></a>
+                                </div>
+                            </div>
+                            <div class="ui text menu">
+                                <div class="item">
+                                    <h2 class="ui header" style="color:rgb(255, 255, 255)">反馈建议:</h2>
+                                </div>
+                                <div class="item">
+                                    <h2 class="ui red header">hi@mugglecoding.com</h2>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="ui basic right aligned segment" style="padding-right:0px;">
+                        <img src="{% static 'images/qrcode.png' %}" style="position:relative;right:25px;"/>
+                        <h2 class="ui header" style="color:rgb(255, 255, 255)">扫码关注微信号</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="ui basic segment foot-body" style="border-bottom:solid red 4px; padding-top:0;padding-bottom:0;">
+                <div class="ui horizontal basic container" style="width:878px;">
+                    <div class="ui basic left aligned container" style="padding-left:0px;">
+                        <div class="item" style="height:33px;padding:0px;">
+                            <p style="font-size:16px;">Designed by Mugglecoding<br></p>
+                        </div>
+                        <div class="right floated item" style="height:16px;padding-top:0px;text-align:right;float:right">
+                            <p style="font-size:16px;">京ICP备123878345号</p>
+                        </div>
+                        <div class="item" style="height:33px;padding:0px;">
+                            <p style="font-size:16px;">Developed by XXX team</p>
+                        </div>
+                    </div>
+                    <!-- <div class="ui basic right aligned container" style="padding-right:0px;">
+                        <div class="item" style="height:16px;padding-top:0px;">
+                            <p style="font-size:16px;">京ICP备123878345号</p>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

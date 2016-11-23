@@ -1,0 +1,362 @@
+{% load staticfiles %}
+{% load my_filter %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>知日报 - 频道页</title>
+    <link rel="stylesheet" href="/static/css/semantic.css" media="screen" title="no title">
+    <link rel="stylesheet" href="/static/css/categories.css" media="screen" title="no title">
+    <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/semantic-ui/2.2.6/semantic.js"></script>
+</head>
+<body>
+
+<script>
+
+</script>
+
+<!--header部分-->
+<div class="ui divider" style="background-color:red;height:4px;margin:0px;" id="tou">
+</div>
+<div class="ui vertical segment" style="padding-top: 0px;">
+    <div class="ui vertical segemnt  container header-menu">
+        <div class="ui borderless text  menu" style="height: 50px;margin-top: 10px;">
+            <div class="ui image" style="height:42px;width:42px;">
+                <img src="/static/images/icon.png" alt="" style="height:40px;"/>
+            </div>
+            <div class="ui image" style="padding-left:10px;padding-top:1px;">
+                <img src="/static/images/zhiribao.png" alt="" style="height: 38px;"/>
+            </div>
+
+            <a href="index" class="item" style="padding-left:30px;font-size:18px;padding-top: 0px;"
+               id="topmenu">首页</a>
+
+
+            {% for cate in catefory %}
+                {% if request.path|spli:cate.id %}
+                    <a href="{% url 'category' cate.id %}" class="active red item"
+                       style="padding-left:30px;font-size:18px;padding-top: 0px;" id="topmenu">{{ cate.name }}</a>
+                {% else %}
+                    <a href="{% url 'category' cate.id %}" class="item"
+                       style="padding-left:30px;font-size:18px;padding-top: 0px;" id="topmenu">{{ cate.name }}</a>
+                {% endif %}
+            {% endfor %}
+
+
+            {% if request.user.is_authenticated %}
+                <div class="right menu">
+                    <div class="ui mini circular image" style="margin-top:10px;">
+                        {% if request.user.profile.avatar %}
+                            <img src="/upload/{{ request.user.profile.avatar }}" alt="" style="height: 35px;width: 35px;"/>
+                            {% else %}
+                            <img src="/upload/avatar/fav2.png" alt="" style="height: 35px;width: 35px;"/>
+                        {% endif %}
+                    </div>
+                    <div class="ui vertical segment" style="margin-top:2px;margin-left:6px;">
+                        <h5 class="ui header user-name">{{ request.user.username }}</h5>
+                    </div>
+                    <div class="item" style="margin-left: 10px;">
+                        <a href="{% url 'logout' %}" style="color: black;">Logout</a>
+                    </div>
+                </div>
+
+            {% else %}
+                <div class="right menu">
+                    <div class="item">
+                        <a href="{% url 'login' %}">
+                            <img src="{% static 'images/login.png' %}"
+                                 style="height:26px;width:24px;margin-bottom: 2px;"/>
+                            <p style="margin-bottom:10px;color:black;margin-top:5px;">登录</p>
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="{% url 'regester' %}">
+                            <img src="{% static 'images/register.png' %}" style="height: 32px;width: 30px;"/>
+                            <p style="margin-bottom:10px;color:black;">注册</p>
+                        </a>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+<div class="ui divider" style="margin:0;"></div>
+
+<!--主题部分（五个大新闻+编辑推荐）-->
+<div class="ui vertical segment container article">
+    <div class="ui grid">
+        <div class="six wide column">
+            {% if article %}
+                {% for art in article %}
+                    <div class="ui vertical segment picture">
+                        <a href="{% url 'detail' art.id %}">
+                            <img src="/upload/{{ art.image }}" alt="" id="leftpicture"/>
+                        </a>
+                    </div>
+
+                {% endfor %}
+            {% else %}
+                <a href="{% url 'index' %}">
+                    <div class="ui vertical segment text-tab">
+                        <h3 class="ui header" style="">
+                            还没有文章哦
+                            <p></p>
+                            <p class="sub header">
+                                点击返回首页
+                            </p>
+                        </h3>
+                    </div>
+                </a>
+            {% endif %}
+        </div>
+        <div class="six wide column">
+            {% if article %}
+                {% for art in article %}
+                    <a href="{% url 'detail' art.id %}">
+                        <div class="ui vertical segment text-tab">
+                            <h3 class="ui header" style="">
+                                {{ art.title |truncatechars:'20' }}
+                                <p></p>
+                                <p class="sub header">
+                                    {{ art.abstract|truncatechars:'85' }}
+                                </p>
+                            </h3>
+                            <div class="ui vertical segment metatime">
+                                <p class="sub header metatime">
+                                    {{ art.publish_time|formatT }}
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="four wide column">
+            <div class="ui red vertical segment recommend-editor">
+                <h3 class="ui header editor" style="font-size:16px;">编辑推荐</h3>
+                <a href="{% url 'detail' bestlist.0.select_article.id %}" style="color: white;">
+                    <div class="ui vertical segment picture-rec"
+                         style="background-image:  url('/upload/{{ bestlist.0.select_article.image }}');">
+                        <div class="ui vertical segment label-num"
+                             style="  background:url('/static/images/redtag.png');background-repeat: no-repeat;background-size: contain; ">
+                            <p class="sub header" style="font-size:12px;">
+                                TOP1
+                            </p>
+                        </div>
+                        <div class="ui segment inverted grey title"></div>
+                        <p class="sub header title" style="font-size:14px;">
+                            {{ bestlist.0.select_article.title|truncatechars:'20' }}
+                        </p>
+                    </div>
+                </a>
+                <a href="{% url 'detail' bestlist.1.select_article.id %}" style="color: white;">
+                    <div class="ui vertical segment picture-rec"
+                         style="background-image:  url('/upload/{{ bestlist.1.select_article.image }}');">
+                        <div class="ui vertical segment label-num"
+                             style="  background:url('/static/images/yellowtag.png');background-repeat: no-repeat;background-size: contain; ">
+                            <p class="sub header" style="font-size:12px;">
+                                TOP2
+                            </p>
+                        </div>
+                        <div class="ui segment inverted grey title"></div>
+                        <p class="sub header title" style="font-size:14px;">
+                            {{ bestlist.1.select_article.title|truncatechars:'20' }}
+                        </p>
+                    </div>
+                </a>
+                <a href="{% url 'detail' bestlist.2.select_article.id %}" style="color: white;">
+                    <div class="ui vertical segment picture-rec"
+                         style="background-image:  url('/upload/{{ bestlist.2.select_article.image }}');">
+                        <div class="ui vertical segment label-num"
+                             style="  background:url('/static/images/bluetag.png');background-repeat: no-repeat;background-size: contain; ">
+                            <p class="sub header" style="font-size:12px;">
+                                TOP3
+                            </p>
+                        </div>
+                        <div class="ui segment inverted grey title"></div>
+                        <p class="sub header title" style="font-size:14px;">
+                            {{ bestlist.2.select_article.title|truncatechars:'20' }}
+                        </p>
+                    </div>
+                </a>
+                <div class="ui list">
+                    {% for best in bestlist|slice:"3:" %}
+                        <span class="sidbararrow"> </span><a class="item uilist"
+                                                             href="{% url 'detail' best.select_article.id %}">{{ best.select_article.title|truncatechars:'24' }}</a>
+                        <div class="listdescription">{{ best.select_article.publish_time|formatT }}</div>
+                    {% endfor %}
+                </div>
+                <div class="ui vertical segment ad">
+                    {% if ad %}
+                        {% for a in ad %}
+                            <div class="ui image ad">
+                                <a href="{{ a.url }}"><img src="/upload/{{ a.image }}" alt="{{ a.name }}"/></a>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ui center aligned very padded vertical segment container">
+{#        <div class="ui pagination menu">#}
+{#            {% if article.has_previous %}#}
+{##}
+{#                <a href="?page={{ article.previous_page_number }}" class="item">#}
+{#                    <i class="icon red left caret"></i>#}
+{#                </a>#}
+{#            {% else %}#}
+{#                <a href="?page={{ article.start_index }}" class="disabled item">#}
+{#                    <i class="icon  left caret"></i>#}
+{#                </a>#}
+{#            {% endif %}#}
+{##}
+{#            {% for page_number in article.paginator.page_range %}#}
+{#                {% ifequal page_number  article.number %}#}
+{#                    <a href="?page={{ page_number }}" class="active item" style="background-color: red; color:white">#}
+{#                        {{ page_number }}#}
+{#                    </a>#}
+{#                {% else %}#}
+{#                    <a href="?page={{ page_number }}" class=" item">#}
+{#                        {{ page_number }}#}
+{#                    </a>#}
+{#                {% endifequal %}#}
+{#            {% endfor %}#}
+{##}
+{#            {% if  article.has_next %}#}
+{#                <a href="?page={{ article.next_page_number }}" class="item">#}
+{#                    <i class="icon red right caret"></i>#}
+{#                </a>#}
+{#            {% else %}#}
+{#                <a href="?page={{ article.paginator.num_pages }}" class="disabled item">#}
+{#                    <i class="icon  right caret"></i>#}
+{#                </a>#}
+{#            {% endif %}#}
+{#        </div>#}
+        <div class="ui borderless five item menu" style="width: 40%;margin-left: 50%;">
+            {% if article|length <= 1 %}
+                {% for page_number in article.paginator.page_range %}
+                    {% ifequal page_number  article.number %}
+                        <a href="?page={{ page_number }}" class="active item" style="background-color: red; color:white">
+                            {{ page_number }}
+                        </a>
+                    {% else %}
+                        <a href="?page={{ page_number }}" class=" item">
+                            {{ page_number }}
+                        </a>
+                    {% endifequal %}
+                {% endfor %}
+            {% else %}
+                {% if article.has_previous %}
+                    <a href="?page={{ article.previous_page_number }}" class="item">
+                        {{ article.previous_page_number }}
+                    </a>
+                {% else %}
+                    <a href="?page={{ article.start_index }}" class="disabled item">
+                        {{ article.start_index }}
+                    </a>
+                {% endif %}
+                <a href="" class="disabled item">...</a>
+                <a href="?page={{ article.paginator.num_pages }}" class="disabled item">
+                    {{ article.paginator.num_pages }}
+                </a>
+                <a href="?page={{ article.paginator.num_pages }}" class="disabled item">
+                    {{ article.paginator.num_pages }}
+                </a>
+                <a href="?page={{ article.paginator.num_pages }}" class="disabled item">
+                    {{ article.paginator.num_pages }}
+                </a>
+            {% endif %}
+        </div>
+    </div>
+
+</div>
+
+<!--footer黑色知日报部分-->
+<div class="ui inverted vertical segment footer">
+    <div class="ui inverted vertical segment container">
+        <div class="ui grid">
+            <div class="ten wide column">
+                <div class="ui inverted vertical segment foot-info">
+                    <div class="ui image">
+                        <img src="/static/images/white_zhiribao.png" alt=""/>
+                    </div>
+
+                    <h3 class="ui header" style="color:red;font-size:22px;">
+                        关于我们
+                        <span class="white-font" style="color:white;"> | </span>
+                        加入我们
+                        <span class="white-font" style="color:white;"> | </span>
+                        联系我们
+                        <span class="white-font" style="color:white;"> | </span>
+                        寻求报道
+                    </h3>
+                    <h3 class="ui header" style="color:red;font-size:22px;">
+                                    <span class="white-font" style="color:white;font-size:22px;">
+                                        反馈建议：
+                                    </span>
+                        <a href="mailto:136772@163.com" style="color:red;">136772@163.com</a>
+                    </h3>
+                </div>
+            </div>
+
+            <div class="six wide column">
+                <div class="ui inverted vertical segment wx">
+                    <div class="ui image wx">
+                        <img src="{% static 'images/1909964172.jpg' %}" alt=""/>
+                    </div>
+                    <p></p>
+                    <div class="ui vertical inverted segment scan-code">
+                        <p style="font-size:16px;">
+                            扫码关注微信公众号
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ui basic segment top">
+        <button type="button" name="button" class="ui circular red button">
+            <a href="#tou" style="color: white;">
+                <i class="arrow up icon" style="margin-left:3px;"></i>
+                <p>
+                    Top
+                </p>
+            </a>
+        </button>
+    </div>
+</div>
+
+<!--底部小组信息部分-->
+<div class="footer-text" style="border-color:red;">
+    <div class="ui vertical segment container ">
+        <div class="ui grid">
+            <div class="eight wide column">
+                <div class="ui vertical center aligned segment foot-info">
+                    <h5 class="ui header design-info">
+                        Designed bu Mugglecoding
+                        <p>
+                            Developed by 25 Team
+                        </p>
+                    </h5>
+
+                </div>
+            </div>
+
+            <div class="eight wide column">
+                <div class="ui vertical center aligned vertical segment">
+                    <h5 class="ui header" style="margin-top:7px;">
+                        京 ICP 备123878345号
+                    </h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="ui divider" style="background-color:red;height:4px;margin:0px;">
+</div>
+</body>
+</html>
